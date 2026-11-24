@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif, sans-serif;
+}
+
+body {
+  background-image: url('BGCB.jpg');
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Container Utama */
+.app-card {
+  background-color: #fdf8eb;
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+/* Logo Styling */
+.logo-container {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.brand-title {
+  color: #e52421;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+/* Form Container */
+.form-box {
+  background-color: #fdfbf2;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.form-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.input-field::placeholder {
+  color: #a0a0a0;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 14px;
+  color: #888;
+  user-select: none;
+}
+
+
+.btn-red {
+  width: 100%;
+  background-color: #e52421;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s, transform 0.1s;
+  margin-bottom: 15px;
+}
+
+.btn-red:hover {
+  background-color: #c81e1b;
+}
+
+.btn-red:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  margin-bottom: 0;
+}
+
+.back-link {
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.back-link:hover {
+  color: #333;
+}
+
+.hidden {
+  display: none;
+}

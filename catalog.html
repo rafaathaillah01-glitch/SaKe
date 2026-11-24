@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaKe/Catalog</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <div class="top-bar">
+        SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU
+    </div>
+
+    <input type="checkbox" id="sidebar-toggle" hidden>
+    <label for="sidebar-toggle" class="menu-btn" aria-label="Buka Menu">☰</label>
+    <label for="sidebar-toggle" class="overlay"></label>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="logo.png" alt="Logo SAKE">
+                <div>
+                    <strong>SAKE</strong>
+                    <small>SAMBAL KEMASAN</small>
+                </div>
+            </div>
+            <label for="sidebar-toggle" class="close-btn" aria-label="Tutup Menu">×</label>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="home.html">Beranda</a>
+            <a href="catalog.html">Produk</a>
+            <a href="cart.html">Keranjang</a>
+            <a href="akun.html">Akun</a>
+        </nav>
+
+        <div class="akun">
+            <span id="userEmail">Memuat akun...</span>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </aside>
+
+    <section id="produk" class="catalog">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">PILIHAN SAKE</p>
+                    <h2>Temukan Sambal Favoritmu</h2>
+                    <p class="subtitle">Enam karakter rasa untuk menemani berbagai hidangan.</p>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <article class="card">
+                    <img src="Cumi.jpg" alt="Sambal Cumi">
+                    <div class="card-body">
+                        <span class="card-tag">VARIAN SAKE</span>
+                        <div class="card-title">
+                            <h3>Sambal Cumi</h3>
+                            <a href="#">Lihat detail →</a>
+                        </div>
+                        <p>Wangi bawang, cita rasa khas.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="Ijo.jpg" alt="Sambal Ijo">
+                    <div class="card-body">
+                        <span class="card-tag">VARIAN SAKE</span>
+                        <div class="card-title">
+                            <h3>Sambal Ijo</h3>
+                            <a href="#">Lihat detail →</a>
+                        </div>
+                        <p>Pilihan sambal dengan warna hijau.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="matah.jpg" alt="Sambal Matah">
+                    <div class="card-body">
+                        <span class="card-tag">VARIAN SAKE</span>
+                        <div class="card-title">
+                            <h3>Sambal Matah</h3>
+                            <a href="#">Lihat detail →</a>
+                        </div>
+                        <p>Varian matah untuk teman makan.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="Terasi.jpg" alt="Sambal Terasi">
+                    <div class="card-body">
+                        <span class="card-tag">VARIAN SAKE</span>
+                        <div class="card-title">
+                            <h3>Sambal Terasi</h3>
+                            <a href="#">Lihat detail →</a>
+                        </div>
+                        <p>Pilihan klasik pecinta sambal.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="Mangga.jpg" alt="Sambal Teri">
+                    <div class="card-body">
+                        <span class="card-tag">VARIAN SAKE</span>
+                        <div class="card-title">
+                            <h3>Sambal Teri</h3>
+                            <a href="#">Lihat detail →</a>
+                        </div>
+                        <p>Sambal dengan tambahan Mangga.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="Cumi.jpg" .jpg" alt="Sambal Cumi">
+                    <div class="card-body">
+                        <span class="card-tag">VARIAN SAKE</span>
+                        <div class="card-title">
+                            <h3>Sambal Tomat</h3>
+                            <a href="#">Lihat detail →</a>
+                        </div>
+                        <p>Varian Cumi yang menggugah selera.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontak" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <img src="logo.png" alt="Logo SAKE">
+                    <div>
+                        <strong>SAKE</strong>
+                        <small>SAMBAL KEMASAN</small>
+                    </div>
+                </div>
+                <p>Teman makan untuk setiap momen.</p>
+            </div>
+
+            <div class="footer-links">
+                <small>JELAJAHI</small>
+                <div>
+                    <a href="home.html">Beranda</a>
+                    <a href="catalog.html">Produk</a>
+                    <a href="cart.html">Keranjang</a>
+                    <a href="akun.html">Akun</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Library Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Koneksi Database -->
+    <script src="supabase.js"></script>
+
+    <!-- JavaScript Utama -->
+    <script src="home.js"></script>
+</body>
+
+</html>

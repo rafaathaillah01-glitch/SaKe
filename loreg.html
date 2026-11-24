@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaKe - Sambal Kemasan</title>
+  <link rel="stylesheet" href="loreg.css">
+</head>
+
+<body>
+
+  <div class="app-card">
+
+    <!-- Logo & Judul -->
+    <div class="logo-container">
+      <img height="190" width="190" src="Logo.png">
+
+    </div>
+
+    <h1 class="brand-title" id="brandTitle">SaKe</h1>
+
+    <!-- TAMPILAN AWAL -->
+    <div id="homeView">
+      <button class="btn-red" onclick="showForm('Login')">Login</button>
+      <button class="btn-red btn-secondary" onclick="showForm('Register')">Register</button>
+    </div>
+
+    <!-- TAMPILAN FORM -->
+    <!-- TAMPILAN FORM -->
+    <div id="formView" class="hidden">
+      <div class="form-box">
+        <div class="form-title" id="formTitle">Register</div>
+
+        <form id="authForm" onsubmit="handleSubmit(event)">
+          <div class="input-group">
+            <input type="email" id="emailInput" class="input-field" placeholder="Email" required>
+          </div>
+
+          <div class="input-group">
+            <input type="password" id="passwordInput" class="input-field" placeholder="Password" required>
+
+            <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
+          </div>
+        </form>
+      </div>
+
+      <p id="message"></p>
+
+      <button type="submit" form="authForm" class="btn-red" id="submitButton">
+        Lanjutkan
+      </button>
+
+      <p class="back-link" onclick="showHome()">
+        ← Kembali ke Menu Utama
+      </p>
+    </div>
+
+    <!-- Library Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Koneksi Database -->
+    <script src="supabase.js"></script>
+
+    <!-- JavaScript Utama -->
+    <script src="loreg.js"></script>
+</body>
+
+</html>

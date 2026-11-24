@@ -1,0 +1,374 @@
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
+
+  body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f6f7f9;
+      color: #1f2937;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      line-height: 1.5;
+  }
+
+  /* ========================
+       KARTU DETAIL PRODUK
+    ======================== */
+  .product-card {
+      width: 100%;
+      max-width: 920px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      border: 1px solid #eceef2;
+      overflow: hidden;
+  }
+
+  .card-body {
+      padding: 28px 32px 32px;
+  }
+
+  /* ========================
+       TOMBOL KEMBALI (KIRI ATAS)
+    ======================== */
+  .top-bar {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 24px;
+  }
+
+  .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background-color: #ffffff;
+      color: #c62828;
+      border: 1.5px solid #e5b4b4;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .btn-back:hover {
+      background-color: #fef2f2;
+      border-color: #c62828;
+  }
+
+  .btn-back:active {
+      transform: scale(0.98);
+  }
+
+  .btn-back svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+  }
+
+  .btn-back:hover svg {
+      transform: translateX(-2px);
+  }
+
+  /* ========================
+       LAYOUT 2 KOLOM RESPONSIF
+    ======================== */
+  .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 36px;
+      align-items: start;
+  }
+
+  /* ========================
+       AREA FOTO PRODUK (1:1)
+    ======================== */
+  .photo-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: #f1f3f5;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  /* Teks placeholder halus yang tampil di belakang jika foto belum diisi */
+  .photo-placeholder {
+      object-fit: fill;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      color: #9ca3af;
+      user-select: none;
+  }
+
+  .photo-placeholder svg {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 10px;
+      color: #cbd5e1;
+  }
+
+  .photo-placeholder strong {
+      font-size: 14px;
+      font-weight: 600;
+      color: #6b7280;
+      margin-bottom: 4px;
+  }
+
+  .photo-placeholder span {
+      font-size: 12.5px;
+      color: #9ca3af;
+  }
+
+  /* Tag gambar produk utama */
+  .product-image {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+  }
+
+  /* ========================
+       INFORMASI PRODUK
+    ======================== */
+  .product-info {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .product-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #111827;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+  }
+
+  .product-price {
+      font-size: 22px;
+      font-weight: 700;
+      color: #c62828;
+      margin-bottom: 12px;
+  }
+
+  .rating-summary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  }
+
+  .stars {
+      color: #f59e0b;
+      font-size: 17px;
+      letter-spacing: 2px;
+      line-height: 1;
+  }
+
+  .rating-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: #6b7280;
+  }
+
+  .divider {
+      border: none;
+      border-top: 1px solid #eceef2;
+      margin: 20px 0;
+  }
+
+  /* ========================
+       ULASAN PEMBELI
+    ======================== */
+  .reviews-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 12px;
+  }
+
+  .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+  }
+
+  .review-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background-color: #fafafa;
+      border: 1px solid #f0f1f4;
+      border-radius: 12px;
+  }
+
+  .review-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #c62828;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+  }
+
+  .review-avatar svg {
+      width: 20px;
+      height: 20px;
+  }
+
+  .review-body {
+      flex: 1;
+      min-width: 0;
+  }
+
+  .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+  }
+
+  .review-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1f2937;
+  }
+
+  .review-stars {
+      color: #f59e0b;
+      font-size: 13px;
+      letter-spacing: 1px;
+      line-height: 1;
+  }
+
+  .review-comment {
+      font-size: 13.5px;
+      color: #4b5563;
+      line-height: 1.5;
+  }
+
+  /* ========================
+       TOMBOL TAMBAH KE KERANJANG
+    ======================== */
+  .action-area {
+      margin-top: 24px;
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .btn-add {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 28px;
+      background-color: #c62828;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.24);
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-add:hover {
+      background-color: #a91f1f;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(198, 40, 40, 0.32);
+  }
+
+  .btn-add:active {
+      transform: translateY(0);
+  }
+
+  .btn-add svg {
+      width: 19px;
+      height: 19px;
+  }
+
+  /* ========================
+       FOOTER KREM LEMBUT
+    ======================== */
+  .card-footer {
+      background-color: #fdf8e8;
+      border-top: 1px solid #f2e8c9;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 13px;
+      color: #5c4b23;
+  }
+
+  .footer-tagline {
+      font-weight: 600;
+  }
+
+  /* ========================
+       NOTIFIKASI TOAST SEDERHANA
+    ======================== */
+  .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #1f2937;
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(14px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 50;
+  }
+
+  .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  .toast-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #22c55e;
+      flex-shrink: 0;
+  }
