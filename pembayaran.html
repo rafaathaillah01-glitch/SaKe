@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - SAKE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="checkout.css">
+    <style>
+        /* Styling tambahan khusus halaman pembayaran */
+        .payment-box { padding: 30px; background: var(--white); border-radius: 16px; border: 1px solid var(--border); }
+        
+        .info-box { background: var(--cream); padding: 15px; border-radius: 10px; margin-bottom: 24px; text-align: left; }
+        .info-box p { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; }
+        .info-box p:last-child { margin-bottom: 0; font-weight: bold; border-top: 1px solid var(--border); padding-top: 10px; font-size: 16px; }
+        
+        /* Styling Form Debit */
+        .debit-form { text-align: left; }
+        .debit-form label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+        .debit-form input, .debit-form select {
+            width: 100%; padding: 12px 14px; margin-bottom: 16px;
+            border: 1px solid var(--border); border-radius: 8px;
+            background: var(--white); font-size: 14px; font-family: inherit;
+        }
+        .debit-form input:focus, .debit-form select:focus {
+            outline: 2px solid var(--red); border-color: transparent;
+        }
+        
+        .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        
+        /* Styling QRIS */
+        .qris-img { width: 200px; height: 200px; background: #eee; margin: 0 auto 20px; display: grid; place-items: center; border-radius: 10px; font-weight: bold; color: var(--muted); border: 2px dashed var(--border); }
+        
+        /* Tombol Bayar */
+        .btn-pay { width: 100%; margin-top: 10px; font-size: 16px; padding: 14px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU</div>
+
+    <main class="content" style="max-width: 500px; margin: 40px auto; padding: 0 16px;">
+        
+        <h1 class="co-title" style="text-align: center; margin-bottom: 24px;">Selesaikan Pembayaran</h1>
+
+        <div class="payment-box">
+            <!-- Info pesanan yang diambil dari checkout -->
+            <div class="info-box">
+                <p><span>Metode Pengiriman</span> <span id="infoKirim">-</span></p>
+                <p><span>Metode Pembayaran</span> <span id="infoBayar">-</span></p>
+                <p><span>Total Tagihan</span> <span id="infoTotal" style="color: var(--red);">-</span></p>
+            </div>
+
+            <!-- ================= AREA QRIS ================= -->
+            <div id="areaQris" style="text-align: center;">
+                <img class="qris-img" src="qris.png" alt="QRIS Placeholder">
+                <p style="font-size: 14px; color: var(--muted); margin-bottom: 20px;">
+                    Silakan scan kode QR di atas menggunakan e-wallet atau m-banking Anda.
+                </p>
+                <button class="btn btn-pay" onclick="selesaikanPesanan()">Saya Sudah Scan & Bayar</button>
+            </div>
+
+            <!-- ================= AREA DEBIT ================= -->
+            <div id="areaDebit" hidden>
+                <form class="debit-form" id="formDebit" onsubmit="prosesDebit(event)">
+                    <div style="margin-bottom: 16px;">
+                        <label for="bank">Jenis Bank</label>
+                        <select id="bank" required>
+                            <option value="" disabled selected>-- Pilih Bank --</option>
+                            <option value="Mandiri">Mandiri</option>
+                            <option value="BCA">BCA</option>
+                            <option value="BRI">BRI</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="nocard">Nomor Kartu Debit (16 Digit)</label>
+                        <input type="text" id="nocard" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric" required>
+                    </div>
+
+                    <div class="row-2">
+                        <div>
+                            <label for="expired">Tanggal Expired</label>
+                            <input type="text" id="expired" placeholder="MM/YY" maxlength="5" inputmode="numeric" required>
+                        </div>
+                        <div>
+                            <label for="cvv">CVV (3 Digit)</label>
+                            <input type="password" id="cvv" placeholder="***" maxlength="3" inputmode="numeric" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-pay">Bayar Sekarang</button>
+                </form>
+            </div>
+
+            <a href="cart.html" class="btn-block" style="display: block; margin-top: 16px; text-align: center; font-size: 13px; color: var(--muted); text-decoration: underline;">Batalkan Pesanan</a>
+        </div>
+
+    </main>
+
+    <script>
+        // 1. Ambil data dari halaman checkout
+        var kirim = localStorage.getItem("sake_checkout_kirim") || "COD";
+        var bayar = localStorage.getItem("sake_checkout_bayar") || "QRIS";
+        var total = localStorage.getItem("sake_checkout_total") || "Rp 0";
+
+        // 2. Tampilkan data ke layar
+        document.getElementById("infoKirim").textContent = kirim;
+        document.getElementById("infoBayar").textContent = bayar;
+        document.getElementById("infoTotal").textContent = total;
+
+        // 3. Sesuaikan tampilan (QRIS vs Debit)
+        if (bayar === "Debit") {
+            document.getElementById("areaQris").hidden = true;
+            document.getElementById("areaDebit").hidden = false;
+        }
+
+        // 4. Fungsi untuk memformat input nomor kartu (otomatis spasi tiap 4 digit)
+        document.getElementById('nocard').addEventListener('input', function (e) {
+            var value = e.target.value.replace(/\D/g, ''); // Hapus karakter non-angka
+            var formatted = value.match(/.{1,4}/g); // Potong tiap 4 angka
+            e.target.value = formatted ? formatted.join(' ') : '';
+        });
+
+        // 5. Fungsi untuk memformat input expired (otomatis tambah slash '/')
+        document.getElementById('expired').addEventListener('input', function (e) {
+            var value = e.target.value.replace(/\D/g, ''); // Hapus karakter non-angka
+            if (value.length > 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // 6. Fungsi saat tombol Bayar Debit ditekan
+        function prosesDebit(e) {
+            e.preventDefault(); // Mencegah form reload halaman
+
+            var bank = document.getElementById('bank').value;
+            var nocard = document.getElementById('nocard').value.replace(/\s/g, ''); // Hilangkan spasi
+            var expired = document.getElementById('expired').value;
+            var cvv = document.getElementById('cvv').value;
+
+            // Validasi panjang nomor kartu & CVV
+            if (nocard.length !== 16) {
+                alert("Nomor kartu debit harus 16 digit!");
+                return;
+            }
+            if (cvv.length !== 3) {
+                alert("CVV harus 3 digit!");
+                return;
+            }
+
+            // Tampilkan loading atau langsung proses
+            var btn = e.target.querySelector('button[type="submit"]');
+            btn.textContent = "Memproses...";
+            btn.disabled = true;
+
+            // Simulasi loading 1.5 detik
+            setTimeout(function() {
+                alert("Pembayaran via " + bank + " Berhasil!\nNomor Kartu: **** **** **** " + nocard.slice(-4));
+                selesaikanPesanan();
+            }, 1500);
+        }
+
+        // 7. Fungsi saat pesanan selesai
+        function selesaikanPesanan() {
+            // Kosongkan keranjang setelah sukses
+            localStorage.removeItem("keranjang_sake");
+            // Hapus data checkout
+            localStorage.removeItem("sake_checkout_kirim");
+            localStorage.removeItem("sake_checkout_bayar");
+            localStorage.removeItem("sake_checkout_total");
+            
+            alert("Terima kasih! Pesanan Anda sedang diproses.");
+            // Kembali ke beranda
+            window.location.href = "home.html";
+        }
+    </script>
+
+</body>
+</html>

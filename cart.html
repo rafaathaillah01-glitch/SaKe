@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang - SAKE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU
+    </div>
+    
+    <input type="checkbox" id="sidebar-toggle" hidden>
+    <label for="sidebar-toggle" class="menu-btn" aria-label="Buka Menu">☰</label>
+    <label for="sidebar-toggle" class="overlay"></label>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="logo.png" alt="Logo SAKE">
+                <div>
+                    <strong>SAKE</strong>
+                    <small>SAMBAL KEMASAN</small>
+                </div>
+            </div>
+            <label for="sidebar-toggle" class="close-btn" aria-label="Tutup Menu">×</label>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="home.html">Beranda</a>
+            <a href="catalog.html">Produk</a>
+            <a href="cart.html">Keranjang</a>
+            <a href="akun.html">Akun</a>
+        </nav>
+
+        <div class="akun">
+            <span id="userEmail">Memuat akun...</span>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </aside>
+
+        <main class="content">
+
+            <section id="kosong" class="box empty" hidden>
+                <div class="empty-ico">🛒</div>
+                <h2>Keranjang masih kosong</h2>
+                <p>Yuk pilih varian sambal favoritmu dulu.</p>
+                <a href="catalog.html" class="btn">Lihat Produk</a>
+            </section>
+
+            <section id="daftar" class="cart-list">
+            <article class="box cart-item">
+                <img src="Cumi.jpg" alt="Sambal Cumi">
+                <div class="item-info">
+                    <h3>Sambal Cumi</h3>
+                    <p class="harga">Rp 25.000</p>
+                    <div class="qty">
+                        <button type="button" aria-label="Kurangi">−</button>
+                        <span>1</span>
+                        <button type="button" aria-label="Tambah">+</button>
+                    </div>
+                </div>
+                <button type="button" class="hapus" aria-label="Hapus">×</button>
+            </article>
+            <article class="box cart-item">
+                <img src="matah.jpg" alt="Sambal Matah">
+                <div class="item-info">
+                    <h3>Sambal Matah</h3>
+                    <p class="harga">Rp 25.000</p>
+                    <div class="qty">
+                        <button type="button" aria-label="Kurangi">−</button>
+                        <span>1</span>
+                        <button type="button" aria-label="Tambah">+</button>
+                    </div>
+                </div>
+                <button type="button" class="hapus" aria-label="Hapus">×</button>
+            </article>
+            </section>
+
+            <section id="ringkasan" class="box summary">
+                <div class="summary-row">
+                    <span>Jumlah barang</span>
+                    <strong id="totalJumlah">2</strong>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <strong id="totalHarga">Rp 50.000</strong>
+                </div>
+                <a href="checkout.html" class="btn btn-block">Lanjut ke Checkout</a>
+                <button type="button" class="kosongkan" id="btnKosongkan">Kosongkan keranjang</button>
+            </section>
+
+        </main>
+
+   <footer id="kontak" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <img src="logo.png" alt="Logo SAKE">
+                    <div>
+                        <strong>SAKE</strong>
+                        <small>SAMBAL KEMASAN</small>
+                    </div>
+                </div>
+                <p>Teman makan untuk setiap momen.</p>
+            </div>
+
+            <div class="footer-links">
+                <small>JELAJAHI</small>
+                <div>
+                    <a href="home.html">Beranda</a>
+                    <a href="catalog.html">Produk</a>
+                    <a href="cart.html">Keranjang</a>
+                    <a href="akun.html">Akun</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <script src="sake-database.js"></script>
+    <script src="auth.js"></script>
+
+</body>
+
+</html>

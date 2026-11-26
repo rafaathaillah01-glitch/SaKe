@@ -43,6 +43,7 @@
   }
 
   .btn-back {
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -186,9 +187,19 @@
   }
 
   .rating-text {
+      white-space: nowrap;
       font-size: 14px;
       font-weight: 500;
       color: #6b7280;
+  }
+
+  .penjualan-text {
+      font-size: 12.5px;
+      color: #6b7280;
+      font-weight: 500;
+      margin-top: 1px;
+      margin-left: auto;      /* "Terjual" rata kanan, otomatis berapa pun panjang teks rating */
+      white-space: nowrap;
   }
 
   .divider {
@@ -372,3 +383,54 @@
       background-color: #22c55e;
       flex-shrink: 0;
   }
+
+  /* ========================
+       RESPONSIVE (tablet & HP)
+    ======================== */
+  @media (max-width: 760px) {
+      body {
+          align-items: flex-start;
+          padding: 16px 12px;
+      }
+
+      .card-body { padding: 20px 18px 24px; }
+
+      /* foto di atas, informasi di bawah */
+      .product-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+      }
+
+      .product-title { font-size: 24px; }
+      .product-price { font-size: 20px; }
+
+      /* jarak 175px hanya dipakai di layar lebar */
+      .penjualan-text { margin-left: 0; }
+
+      .action-area { justify-content: stretch; }
+      .btn-add { width: 100%; }
+
+      .card-footer { padding: 14px 18px; }
+  }
+
+  @media (max-width: 480px) {
+      .toast {
+          left: 12px;
+          right: 12px;
+          bottom: 16px;
+      }
+  }
+
+  /* Tambahan kecil di bawah dtlbwg.css */
+@media (max-width: 480px) {
+    .card-body {
+        padding: 16px;
+    }
+    .btn-back {
+        width: 100%;
+        justify-content: center;
+    }
+    .product-title {
+        font-size: 22px;
+    }
+}

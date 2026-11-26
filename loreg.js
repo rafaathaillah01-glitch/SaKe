@@ -1,4 +1,3 @@
-
 const homeView = document.getElementById('homeView');
 const formView = document.getElementById('formView');
 const formTitle = document.getElementById('formTitle');
@@ -62,7 +61,8 @@ function togglePasswordVisibility() {
 
 
 // ==============================
-// PROSES LOGIN DAN REGISTER
+// PROSES LOGIN / REGISTER
+// (memakai database lokal SakeDB dari db.js)
 // ==============================
 
 async function handleSubmit(event) {
@@ -82,50 +82,16 @@ async function handleSubmit(event) {
 
     if (currentMode === 'Register') {
 
-      // REGISTER AKUN BARU
+      await SakeDB.register(email, password);
 
-      const { data, error } =
-        await supabaseClient.auth.signUp({
-
-          email: email,
-          password: password
-
-        });
-
-      if (error) throw error;
-
-      // Jika pendaftaran langsung menghasilkan sesi
-      if (data.session) {
-
-        message.textContent = 'Register berhasil!';
-
-        window.location.href = 'home.html';
-
-      } else {
-
-        message.textContent =
-          'Akun berhasil didaftarkan. Silakan verifikasi email terlebih dahulu.';
-
-      }
+      message.textContent = 'Register berhasil!';
+      window.location.href = 'home.html';
 
     } else {
 
-      // LOGIN AKUN
-
-      const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
-
-          email: email,
-          password: password
-
-        });
-
-      if (error) throw error;
-
-      // LOGIN BERHASIL
+      await SakeDB.login(email, password);
 
       message.textContent = 'Login berhasil!';
-
       window.location.href = 'home.html';
 
     }
@@ -141,4 +107,3 @@ async function handleSubmit(event) {
   }
 
 }
-s

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Sambal Terasi | SaKe</title>
+
+    <!-- Font Inter agar teks terlihat rapi dan modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dtlbwg.css">
+</head>
+
+<body>
+
+    <!-- KARTU UTAMA DETAIL PRODUK -->
+    <main class="product-card">
+        <div class="card-body">
+
+            <!-- TOMBOL KEMBALI (RATA KIRI ATAS) -->
+            <!-- Ganti href di bawah dengan file halaman tujuan -->
+            <div class="top-bar">
+                <a href="catalog.html" class="btn-back">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                    <span>Kembali</span>
+                </a>
+            </div>
+
+            <!-- KONTEN 2 KOLOM: FOTO (KIRI) & DETAIL (KANAN) -->
+            <div class="product-grid">
+
+                <!-- BAGIAN FOTO PRODUK -->
+                <div class="photo-wrapper">
+                    <!-- Ganti src dengan nama file foto produk -->
+                    <img src="Terasi.jpg" alt="Foto Sambal Terasi" class="product-image">
+                </div>
+
+                <!-- BAGIAN INFO PRODUK & ULASAN -->
+                <section class="product-info">
+                    <h1 class="product-title">Sambal Terasi</h1>
+                    <p class="product-price">Rp 25.000</p>
+
+                    <!-- Rating Produk -->
+                    <div class="rating-summary">
+                        <span class="rating-text">Belum ada ulasan</span>
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- BAGIAN ULASAN PEMBELI -->
+                    <h2 class="reviews-title">Ulasan Pembeli</h2>
+
+                    <div class="review-list">
+                        <p class="review-comment">Belum ada ulasan untuk produk ini.</p>
+                    </div>
+
+                    <!-- TOMBOL AKSI TAMBAH -->
+                    <div class="action-area">
+                        <button type="button" class="btn-add">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                            <span>Tambah</span>
+                        </button>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- BAGIAN FOOTER -->
+        <footer class="card-footer">
+            <span class="footer-tagline">Juaranya Sambal Kemasan</span>
+            <span>&copy; 2026 SaKe. All rights reserved.</span>
+        </footer>
+    </main>
+
+</body>
+
+</html>

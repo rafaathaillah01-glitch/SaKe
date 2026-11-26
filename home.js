@@ -1,23 +1,20 @@
-async function tampilkanAkun() {
-    const { data, error } = await supabaseClient.auth.getUser();
+// home.js - halaman Beranda: tampilkan email di sidebar dan logout
+// (memakai database lokal SakeDB, jadi db.js harus dimuat lebih dulu)
 
-    if (error || !data.user) {
+async function tampilkanAkun() {
+    const user = SakeDB.getCurrentUser();
+
+    // Belum login -> kembali ke halaman login
+    if (!user) {
         window.location.href = "loreg.html";
         return;
     }
 
-    document.getElementById("userEmail").textContent =
-        data.user.email;
+    document.getElementById("userEmail").textContent = user.email;
 }
 
 async function logout() {
-    const { error } = await supabaseClient.auth.signOut();
-
-    if (error) {
-        alert(error.message);
-        return;
-    }
-
+    SakeDB.logout();
     window.location.href = "loreg.html";
 }
 

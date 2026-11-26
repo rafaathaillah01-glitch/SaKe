@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifikasi - SAKE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pesandanulasan.css">
+</head>
+<body>
+
+    <!--iki bagian nduwur-->
+        <div class="top-bar">
+        SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU
+    </div>
+
+    <input type="checkbox" id="sidebar-toggle" hidden>
+    <label for="sidebar-toggle" class="menu-btn" aria-label="Buka Menu">☰</label>
+    <label for="sidebar-toggle" class="overlay"></label>
+
+    <!--iki sidebar navigasi e-->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="logo.png" alt="Logo SAKE">
+                <div>
+                    <strong>SAKE</strong>
+                    <small>SAMBAL KEMASAN</small>
+                </div>
+            </div>
+            <label for="sidebar-toggle" class="close-btn" aria-label="Tutup Menu">×</label>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="home.html">Beranda</a>
+            <a href="catalog.html">Produk</a>
+            <a href="cart.html">Keranjang</a>
+            <a href="akun.html">Akun</a>
+        </nav>
+
+        <div class="akun">
+            <span id="userEmail">Memuat akun...</span>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </aside>
+
+    <!--SCRIPT JAVASCRIPT E DATABASE CAK-->
+    <script src="sake-database.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

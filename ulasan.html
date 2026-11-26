@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beri Rating & Ulasan - SAKE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ulasan.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU
+    </div>
+
+    <input type="checkbox" id="sidebar-toggle" hidden>
+    <label for="sidebar-toggle" class="menu-btn" aria-label="Buka Menu">☰</label>
+    <label for="sidebar-toggle" class="overlay"></label>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="logo.png" alt="Logo SAKE">
+                <div>
+                    <strong>SAKE</strong>
+                    <small>SAMBAL KEMASAN</small>
+                </div>
+            </div>
+            <label for="sidebar-toggle" class="close-btn" aria-label="Tutup Menu">×</label>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="home.html">Beranda</a>
+            <a href="catalog.html">Produk</a>
+            <a href="cart.html">Keranjang</a>
+            <a href="akun.html">Akun</a>
+        </nav>
+
+        <div class="akun">
+            <span id="userEmail">Memuat akun...</span>
+            <button type="button" onclick="logout()">Logout</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div class="review-header">
+            <a href="pesandanulasan.html" class="back-link">← Kembali ke Pesanan</a>
+            <h1>Beri Rating & Ulasan</h1>
+        </div>
+
+        <section class="box review-card">
+            <!-- Info Produk yang Diulas -->
+            <div class="product-summary">
+                <img id="produkImg" src="Cumi.jpg" alt="Sambal Cumi">
+                <div class="product-detail">
+                    <h2 id="produkNama">Sambal Cumi</h2>
+                    <p class="harga" id="produkHarga">Rp 25.000</p>
+                    <span class="badge-status">Pesanan Diterima</span>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Form Rating & Ulasan -->
+            <form id="formUlasan" class="review-form">
+                <div class="form-group center">
+                    <label>Bagaimana rasa & kualitas sambal ini?</label>
+                    <div class="star-rating" role="radiogroup" aria-label="Rating Bintang">
+                        <input type="radio" id="star5" name="rating" value="5" required>
+                        <label for="star5" title="5 Bintang - Mantap Pol!">★</label>
+
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4" title="4 Bintang - Enak">★</label>
+
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3" title="3 Bintang - Cukup">★</label>
+
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2" title="2 Bintang - Kurang">★</label>
+
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1" title="1 Bintang - Mengecewakan">★</label>
+                    </div>
+                    <small id="ratingLabel" class="rating-hint">Pilih bintang 1 sampai 5</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Kesan cepat (opsional)</label>
+                    <div class="tag-list">
+                        <label class="tag-chip"><input type="checkbox" name="tag" value="Pedasnya pas"><span>Pedasnya pas</span></label>
+                        <label class="tag-chip"><input type="checkbox" name="tag" value="Bumbu medok"><span>Bumbu medok</span></label>
+                        <label class="tag-chip"><input type="checkbox" name="tag" value="Kemasan aman"><span>Kemasan aman</span></label>
+                        <label class="tag-chip"><input type="checkbox" name="tag" value="Bikin nagih"><span>Bikin nagih</span></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="komentar">Ceritakan ulasanmu</label>
+                    <textarea id="komentar" name="komentar" rows="4" placeholder="Contoh: Cuminya melimpah, pedasnya nendang banget buat teman nasi hangat..." required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <a href="pesandanulasan.html" class="btn-batal">Batal</a>
+                    <button type="submit" class="btn">Kirim Ulasan</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer id="kontak" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <img src="logo.png" alt="Logo SAKE">
+                    <div>
+                        <strong>SAKE</strong>
+                        <small>SAMBAL KEMASAN</small>
+                    </div>
+                </div>
+                <p>Teman makan untuk setiap momen.</p>
+            </div>
+
+            <div class="footer-links">
+                <small>JELAJAHI</small>
+                <div>
+                    <a href="home.html">Beranda</a>
+                    <a href="catalog.html">Produk</a>
+                    <a href="cart.html">Keranjang</a>
+                    <a href="akun.html">Akun</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sake-database.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Mengubah teks keterangan saat bintang dipilih
+        const keteranganBintang = {
+            1: "1/5 - Kurang memuaskan",
+            2: "2/5 - Biasa saja",
+            3: "3/5 - Cukup enak",
+            4: "4/5 - Enak & gurih",
+            5: "5/5 - Mantap pol, bikin nagih!"
+        };
+
+        document.querySelectorAll('input[name="rating"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.getElementById('ratingLabel').textContent = keteranganBintang[e.target.value];
+            });
+        });
+
+        // Contoh penanganan submit form
+        document.getElementById('formUlasan').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Terima kasih! Ulasan kamu berhasil dikirim.');
+            window.location.href = 'pesandanulasan.html';
+        });
+    </script>
+</body>
+</html>

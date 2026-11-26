@@ -1,0 +1,68 @@
+/* checkout.css - gaya khusus halaman Checkout
+   (dipakai bersama style.css dan cart.css) */
+
+.back-cart { display: inline-block; margin-bottom: 14px; font-size: 14px; font-weight: 600; color: var(--red); }
+.back-cart:hover { color: var(--red-dark); }
+
+.co-title { font-size: 20px; margin-bottom: 14px; color: var(--red); }
+
+.co-card { padding: 20px; margin-bottom: 16px; }
+.co-card h3 { font-size: 16px; margin-bottom: 4px; }
+.co-card .sub { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+
+/* Isian data penerima */
+.co-card label.lbl { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+.co-card input[type="text"],
+.co-card input[type="tel"],
+.co-card textarea {
+    width: 100%; padding: 11px 14px; margin-bottom: 14px;
+    border: 1px solid var(--border); border-radius: 14px;
+    background: var(--white); font-size: 14px; font-family: inherit;
+}
+.co-card textarea { resize: vertical; min-height: 76px; }
+.co-card input:focus,
+.co-card textarea:focus { outline: 2px solid var(--red); border-color: transparent; }
+
+/* Pilihan (radio berbentuk kartu) */
+.opsi { display: flex; flex-direction: column; gap: 10px; }
+.opsi label {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px;
+    background: var(--white);
+    border: 1px solid var(--border); border-radius: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.opsi label:hover { border-color: var(--red); }
+.opsi input { accent-color: var(--red); width: 18px; height: 18px; flex-shrink: 0; }
+.opsi .ico { font-size: 22px; width: 28px; text-align: center; }
+.opsi .teks { flex: 1; min-width: 0; }
+.opsi .teks strong { display: block; font-size: 15px; }
+.opsi .teks small { color: var(--muted); font-size: 12.5px; }
+.opsi .biaya { font-weight: 700; font-size: 14px; white-space: nowrap; }
+.opsi .biaya.gratis { color: #166534; }
+.opsi label:has(input:checked) { border-color: var(--red); background: var(--cream); }
+
+/* Catatan di bawah pilihan pembayaran */
+.catatan {
+    margin-top: 12px; padding: 12px 14px;
+    background: var(--white); border: 1px dashed var(--border); border-radius: 12px;
+    font-size: 13px; color: var(--muted);
+}
+.qris-box {
+    width: 120px; height: 120px; margin: 0 auto 8px;
+    display: grid; place-items: center;
+    border: 2px dashed var(--border); border-radius: 12px;
+    font-weight: 700; color: var(--muted); letter-spacing: 0.08em;
+}
+.catatan.tengah { text-align: center; }
+
+/* Ringkasan pesanan */
+.ringkas-item { display: flex; align-items: center; gap: 12px; padding: 8px 0; }
+.ringkas-item img { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; background: #e9e1d8; flex-shrink: 0; }
+.ringkas-item .nama { flex: 1; font-size: 14px; font-weight: 600; }
+.ringkas-item .nama small { display: block; font-weight: 400; color: var(--muted); }
+.ringkas-item .hrg { font-size: 14px; font-weight: 600; }
+.summary-row .gratis { color: #166534; font-weight: 700; }
+
+.pesan-ok { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: #ecfdf3; color: #166534; font-size: 14px; text-align: center; }

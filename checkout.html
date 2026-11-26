@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SAKE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU
+    </div>
+
+    <input type="checkbox" id="sidebar-toggle" hidden>
+    <label for="sidebar-toggle" class="menu-btn" aria-label="Buka Menu">☰</label>
+    <label for="sidebar-toggle" class="overlay"></label>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="logo.png" alt="Logo SAKE">
+                <div>
+                    <strong>SAKE</strong>
+                    <small>SAMBAL KEMASAN</small>
+                </div>
+            </div>
+            <label for="sidebar-toggle" class="close-btn" aria-label="Tutup Menu">×</label>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="home.html">Beranda</a>
+            <a href="catalog.html">Produk</a>
+            <a href="cart.html">Keranjang</a>
+            <a href="akun.html">Akun</a>
+        </nav>
+
+        <div class="akun">
+            <span id="userEmail">Memuat akun...</span>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </aside>
+
+    <main class="content">
+
+        <a href="cart.html" class="back-cart">← Kembali ke keranjang</a>
+        <h1 class="co-title">Checkout</h1>
+
+        <form id="formCheckout">
+
+            <!-- PENGIRIMAN -->
+            <section class="box co-card">
+                <h3>Pengiriman</h3>
+                <p class="sub">Pilih cara pesananmu sampai.</p>
+
+                <div class="opsi">
+                    <label>
+                        <input type="radio" name="kirim" value="5000" data-nama="COD" checked>
+                        <span class="ico">🛵</span>
+                        <span class="teks">
+                            <strong>COD</strong>
+                            <small>Diantar ke alamatmu, jarak 0 - 5 km</small>
+                        </span>
+                        <span class="biaya">Rp 5.000</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="kirim" value="0" data-nama="Ambil di tempat">
+                        <span class="ico">🏠</span>
+                        <span class="teks">
+                            <strong>Ambil di tempat</strong>
+                            <small>Ambil sendiri pesananmu</small>
+                        </span>
+                        <span class="biaya gratis">Gratis</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- PEMBAYARAN -->
+            <section class="box co-card">
+                <h3>Pembayaran</h3>
+                <p class="sub">Pilih metode pembayaran.</p>
+
+                <div class="opsi">
+                    <label>
+                        <input type="radio" name="bayar" value="QRIS" checked>
+                        <span class="ico">📱</span>
+                        <span class="teks">
+                            <strong>QRIS</strong>
+                            <small>Scan dengan e-wallet atau m-banking</small>
+                        </span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="bayar" value="Debit">
+                        <span class="ico">💳</span>
+                        <span class="teks">
+                            <strong>Debit</strong>
+                            <small>Kartu debit</small>
+                        </span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- RINGKASAN PESANAN -->
+            <section class="box summary">
+                <h3 style="font-size:16px;margin-bottom:8px;">Ringkasan Pesanan</h3>
+
+                <div class="ringkas-item">
+                    <img src="Cumi.jpg" alt="Sambal Cumi">
+                    <span class="nama">Sambal Cumi <small>1 x Rp 25.000</small></span>
+                    <span class="hrg">Rp 25.000</span>
+                </div>
+                <div class="ringkas-item">
+                    <img src="matah.jpg" alt="Sambal Matah">
+                    <span class="nama">Sambal Matah <small>1 x Rp 25.000</small></span>
+                    <span class="hrg">Rp 25.000</span>
+                </div>
+
+                <div class="summary-row" style="margin-top:8px;">
+                    <span>Subtotal (2 barang)</span>
+                    <strong>Rp 50.000</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Ongkir</span>
+                    <strong id="teksOngkir">Rp 5.000</strong>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <strong id="teksTotal">Rp 55.000</strong>
+                </div>
+
+                <button type="submit" class="btn btn-block" id="btnLanjut">Lanjutkan ke Pembayaran</button>
+            </section>
+
+        </form>
+    </main>
+
+    <footer id="kontak" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <img src="logo.png" alt="Logo SAKE">
+                    <div>
+                        <strong>SAKE</strong>
+                        <small>SAMBAL KEMASAN</small>
+                    </div>
+                </div>
+                <p>Teman makan untuk setiap momen.</p>
+            </div>
+
+            <div class="footer-links">
+                <small>JELAJAHI</small>
+                <div>
+                    <a href="home.html">Beranda</a>
+                    <a href="catalog.html">Produk</a>
+                    <a href="cart.html">Keranjang</a>
+                    <a href="akun.html">Akun</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sake-database.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        var SUBTOTAL = 50000;
+
+        function rp(n) { return n === 0 ? "Gratis" : "Rp " + n.toLocaleString("id-ID"); }
+
+        function perbarui() {
+            var kirim = document.querySelector('input[name="kirim"]:checked');
+            var ongkir = Number(kirim.value);
+
+            // Update tampilan Ongkir & Total
+            document.getElementById("teksOngkir").textContent = rp(ongkir);
+            document.getElementById("teksTotal").textContent = "Rp " + (SUBTOTAL + ongkir).toLocaleString("id-ID");
+        }
+
+        // Jalankan saat radio button berubah
+        document.querySelectorAll('input[name="kirim"]').forEach(function (el) {
+            el.addEventListener("change", perbarui);
+        });
+        perbarui(); // Jalankan saat halaman pertama kali dimuat
+
+        // Saat tombol "Lanjutkan" diklik
+        document.getElementById("formCheckout").addEventListener("submit", function(e) {
+            e.preventDefault(); // Mencegah form reload halaman
+            
+            // Ambil data pilihan
+            var metodeKirim = document.querySelector('input[name="kirim"]:checked').dataset.nama;
+            var metodeBayar = document.querySelector('input[name="bayar"]:checked').value;
+            var totalAkhir = document.getElementById("teksTotal").textContent;
+
+            // Simpan ke localStorage agar bisa dibaca di halaman pembayaran.html
+            localStorage.setItem("sake_checkout_kirim", metodeKirim);
+            localStorage.setItem("sake_checkout_bayar", metodeBayar);
+            localStorage.setItem("sake_checkout_total", totalAkhir);
+
+            // Pindah ke halaman pembayaran
+            window.location.href = "pembayaran.html";
+        });
+    </script>
+
+</body>
+
+</html>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAKE - Sambal Kemasan</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="home.css">
 </head>
 
@@ -72,7 +73,7 @@
                 <div class="feature-item">
                     <span class="feature-icon">✦</span>
                     <div>
-                        <h3>6 Pilihan Varian</h3>
+                        <h3>Banyak Pilihan Varian</h3>
                         <p>Pilih rasa yang kamu suka</p>
                     </div>
                 </div>
@@ -94,6 +95,26 @@
         </div>
     </section>
 
+    <section id="tentang" class="tentang">
+        <div class="container">
+            <div class="tentang-head">
+                <div>
+                    <h2>Tentang SAKE</h2>
+                </div>
+            </div>
+
+            <div class="tentang-grid">
+                <article class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>SAKE</h2>
+                        </div>
+                        <h4>SaKe, sebuah usaha UMKM yang didirikan pada Februari 2026. Sesuai dengan namanya, nama SaKe terinspirasi dari kata Sambal Kemasan yang di singkat. Menyediakan berbagai varian sambal kemasan berwadah toples kecil yang praktis dan mudah untuk dibawa ke mana-mana.</h4>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
     <section id="produk" class="catalog">
         <div class="container">
             <div class="section-head">
@@ -113,7 +134,7 @@
                         <span class="card-tag">VARIAN SAKE</span>
                         <div class="card-title">
                             <h3>Sambal Cumi</h3>
-                            <a href="dtlbwg.html">Lihat detail →</a>
+                            <a href="detail-cumi.html">Lihat detail →</a>
                         </div>
                         <p>Wangi bawang, cita rasa khas.</p>
                     </div>
@@ -125,7 +146,7 @@
                         <span class="card-tag">VARIAN SAKE</span>
                         <div class="card-title">
                             <h3>Sambal Ijo</h3>
-                            <a href="#">Lihat detail →</a>
+                            <a href="detail-ijo.html">Lihat detail →</a>
                         </div>
                         <p>Pilihan sambal dengan warna hijau.</p>
                     </div>
@@ -137,7 +158,7 @@
                         <span class="card-tag">VARIAN SAKE</span>
                         <div class="card-title">
                             <h3>Sambal Matah</h3>
-                            <a href="#">Lihat detail →</a>
+                            <a href="detail-matah.html">Lihat detail →</a>
                         </div>
                         <p>Varian matah untuk teman makan.</p>
                     </div>
@@ -170,11 +191,9 @@
         </div>
     </footer>
 
-    <!-- Library Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- Koneksi Database -->
-    <script src="supabase.js"></script>
+    <script src="sake-database.js"></script>
 
     <!-- JavaScript Utama -->
     <script src="home.js"></script>

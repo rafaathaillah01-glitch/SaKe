@@ -13,6 +13,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    height: auto;
 }
 
 html {
@@ -24,7 +26,6 @@ body {
     color: var(--text);
     background: var(--white);
     line-height: 1.5;
-    min-width: 1120px;
 }
 
 img {
@@ -39,7 +40,8 @@ a {
 }
 
 .container {
-    width: 1120px;
+    width: 100%;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -122,8 +124,8 @@ a {
 }
 
 .brand img {
-    width: 42px;
-    height: 42px;
+    max-width: 100%;
+    height: auto;
     border-radius: 50%;
 }
 
@@ -191,7 +193,7 @@ a {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.1em;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .subtitle {
@@ -225,12 +227,16 @@ a {
     padding: 10px;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(35, 28, 24, 0.08);
+    max-width: 100%;
+    height: auto;
 }
 
 .img-frame img {
     border-radius: 14px;
     aspect-ratio: 16 / 10;
     background: #e9e1d8;
+    max-width: 100%;
+    height: auto;
 }
 
 /* Hero */
@@ -275,7 +281,9 @@ a {
 
 /* Keunggulan */
 .features {
-    margin-top: -32px;
+    margin-top: -82px;
+    padding-bottom: 24px;
+    background: var(--cream);
 }
 
 .features-box {
@@ -332,6 +340,7 @@ a {
 .story h2 {
     font-size: 30px;
     margin-bottom: 6px;
+    color: var(--black);
 }
 
 .all-link {
@@ -357,6 +366,8 @@ a {
 .card img {
     aspect-ratio: 4 / 3;
     background: #e9e1d8;
+    max-width: 100%;
+    height: auto;
 }
 
 .card-body {
@@ -375,6 +386,10 @@ a {
     justify-content: space-between;
     align-items: center;
     margin: 4px 0 6px;
+}
+
+.card-title h2 {
+    color:#7f1d1d;
 }
 
 .card-title h3 {
@@ -444,4 +459,59 @@ a {
 
 .footer-links a:hover {
     color: #f87171;
+}
+
+/* iki bagian tentang wong */
+.tentang {
+    padding: 72px 0;
+    background: var(--muted);
+}
+
+.tentang-head h2 {
+    color:#ebe4dc;
+    margin-bottom: 12px;
+}
+
+.tentang-grid {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 24px;
+}
+
+/* --- RESPONSIVE HOME --- */
+@media (max-width: 992px) {
+    .hero-grid, .story-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .hero-image {
+        align-items: center;
+    }
+    .features-box {
+        grid-template-columns: 1fr;
+    }
+    .features {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    .tentang-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+    .footer-links div {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }

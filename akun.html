@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akun - SAKE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="akun.css">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU
+    </div>
+    
+    <input type="checkbox" id="sidebar-toggle" hidden>
+    <label for="sidebar-toggle" class="menu-btn" aria-label="Buka Menu">☰</label>
+    <label for="sidebar-toggle" class="overlay"></label>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="logo.png" alt="Logo SAKE">
+                <div>
+                    <strong>SAKE</strong>
+                    <small>SAMBAL KEMASAN</small>
+                </div>
+            </div>
+            <label for="sidebar-toggle" class="close-btn" aria-label="Tutup Menu">×</label>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="home.html">Beranda</a>
+            <a href="catalog.html">Produk</a>
+            <a href="cart.html">Keranjang</a>
+            <a href="akun.html">Akun</a>
+        </nav>
+
+        <div class="akun">
+            <span id="userEmail">Memuat akun...</span>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </aside>
+
+
+
+        <main class="content">
+
+            <section class="box profile-card">
+                <div class="avatar" id="avatar">?</div>
+                <div class="profile-info">
+                    <h2 id="namaUser">Memuat...</h2>
+                    <p id="emailUser">-</p>
+                </div>
+            </section>
+
+            <section class="box form-card">
+                <h3>Ubah Nama</h3>
+                <label for="inputNama">Nama Panggilan</label>
+                <input type="text" id="inputNama" placeholder="Masukkan nama panggilan kamu" maxlength="60">
+                <button class="btn" id="btnSimpan" onclick="simpanNama()">Simpan</button>
+                <p id="pesan" class="pesan" hidden></p>
+            </section>
+
+                        <!-- FITUR ALAMAT PENGIRIMAN -->
+            <section class="box form-card alamat-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h3>Alamat Pengiriman</h3>
+                    <span style="font-size: 12px; color: var(--muted);">Maks. 3 Alamat</span>
+                </div>
+                
+                <div id="daftarAlamat" class="list-alamat">
+                    <!-- Alamat akan di-render oleh JS -->
+                </div>
+
+                <!-- Form Tambah Alamat (Disembunyikan dulu) -->
+                <div id="formAlamat" class="form-tambah-alamat" hidden>
+                    <label for="inputLabel">Label (Misal: Rumah, Kantor)</label>
+                    <input type="text" id="inputLabel" placeholder="Rumah" maxlength="15">
+                    
+                    <label for="inputAlamat">Alamat Lengkap</label>
+                    <textarea id="inputAlamat" placeholder="Jl. Contoh No. 123, RT/RW, Kelurahan, Kecamatan, Kota" rows="2" style="resize: vertical; min-height: 60px;"></textarea>
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 10px;">
+                        <button class="btn" type="button" onclick="simpanAlamat()">Simpan</button>
+                        <button class="btn" type="button" onclick="tutupFormAlamat()" style="background: var(--muted);">Batal</button>
+                    </div>
+                </div>
+
+                <button id="btnTambahAlamat" class="btn btn-outline" style="width: 100%;" onclick="bukaFormAlamat()">+ Tambah Alamat Baru</button>
+            </section>
+
+            <nav class="box menu-list">
+                <a href="pesandanulasan.html" class="menu-item"><span class="ico">🛒</span><span class="teks">Pesanan dan Ulasan Saya</span><em>›</em></a>
+                <a href="notifikasi.html" class="menu-item"><span class="ico">🌶️</span><span class="teks">Notifikasi</span><em>›</em></a>
+                <a href="home.html" class="menu-item"><span class="ico">🏠</span><span class="teks">Kembali ke Beranda</span><em>›</em></a>
+            </nav>
+
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+
+        </main>
+
+   <footer id="kontak" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <img src="logo.png" alt="Logo SAKE">
+                    <div>
+                        <strong>SAKE</strong>
+                        <small>SAMBAL KEMASAN</small>
+                    </div>
+                </div>
+                <p>Teman makan untuk setiap momen.</p>
+            </div>
+
+            <div class="footer-links">
+                <small>JELAJAHI</small>
+                <div>
+                    <a href="home.html">Beranda</a>
+                    <a href="catalog.html">Produk</a>
+                    <a href="cart.html">Keranjang</a>
+                    <a href="akun.html">Akun</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <script src="sake-database.js"></script>
+    <script src="auth.js"></script>
+    <script src="akun.js"></script>
+
+
+</body>
+
+</html>
