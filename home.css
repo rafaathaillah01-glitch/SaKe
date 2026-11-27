@@ -13,8 +13,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    max-width: 100%;
-    height: auto;
 }
 
 html {
@@ -48,13 +46,41 @@ a {
 
 /* Top Bar */
 .top-bar {
+    position: relative;          /* top bar tetap di atas halaman, ikut ter-scroll (tidak mengikuti layar) */
     background: var(--red);
     color: var(--white);
     text-align: center;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
-    padding: 8px 16px;
+    padding: 10px 56px;          /* ruang kiri-kanan untuk tombol menu & foto profil */
+        position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Foto profil di pojok kanan atas (sama dengan avatar di halaman Akun) */
+.avatar-nav {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    background: var(--red);
+    color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.avatar-nav:hover {
+    background: var(--red-dark);
 }
 
 /* Tombol & Sidebar Buka-Tutup */
@@ -124,8 +150,8 @@ a {
 }
 
 .brand img {
-    max-width: 100%;
-    height: auto;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
 }
 
@@ -227,16 +253,12 @@ a {
     padding: 10px;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(35, 28, 24, 0.08);
-    max-width: 100%;
-    height: auto;
 }
 
 .img-frame img {
     border-radius: 14px;
     aspect-ratio: 16 / 10;
     background: #e9e1d8;
-    max-width: 100%;
-    height: auto;
 }
 
 /* Hero */
@@ -351,7 +373,8 @@ a {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* jumlah kolom menyesuaikan lebar layar: 3 di laptop, 2 di tablet, 1 di HP */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: 24px;
 }
 
@@ -366,8 +389,6 @@ a {
 .card img {
     aspect-ratio: 4 / 3;
     background: #e9e1d8;
-    max-width: 100%;
-    height: auto;
 }
 
 .card-body {
@@ -478,40 +499,80 @@ a {
     gap: 24px;
 }
 
-/* --- RESPONSIVE HOME --- */
-@media (max-width: 992px) {
-    .hero-grid, .story-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
+/* ==========================================================
+   RESPONSIVE - menyesuaikan tampilan di tablet & HP
+   ========================================================== */
+
+/* Layar kecil: tombol menu pindah ke dalam top bar supaya tidak menimpa isi halaman */
+@media (max-width: 1200px) {
+    .top-bar {
+        padding: 12px 56px;      /* top bar 2 baris di HP */
     }
-    .hero-image {
-        align-items: center;
+
+    .menu-btn {
+        top: 6px;
+        left: 10px;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        z-index: 901;
     }
-    .features-box {
-        grid-template-columns: 1fr;
-    }
-    .features {
-        margin-top: 0;
+
+    .sidebar {
+        height: 100dvh;          /* tinggi layar HP yang sebenarnya */
+        overflow-y: auto;
     }
 }
 
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 36px;
+/* Tablet */
+@media (max-width: 900px) {
+    .hero { padding: 48px 0 84px; }
+
+    .hero-grid,
+    .story-grid {
+        grid-template-columns: 1fr;   /* teks di atas, gambar di bawah */
+        gap: 32px;
     }
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-    .tentang-grid {
-        grid-template-columns: 1fr;
-    }
+
+    .hero h1 { font-size: 40px; }
+    .hero-image .img-frame { width: 100%; }
+
+    .catalog,
+    .story,
+    .tentang { padding: 48px 0; }
+
     .footer-grid {
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
         gap: 24px;
     }
-    .footer-links div {
-        justify-content: center;
+}
+
+/* Keunggulan jadi satu kolom */
+@media (max-width: 700px) {
+    .features-box {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px 24px;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    .container { padding: 0 16px; }
+
+    .hero h1 { font-size: 32px; }
+
+    .section-head {
         flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .section-head h2,
+    .story h2 { font-size: 24px; }
+
+    .footer-links div {
+        flex-wrap: wrap;
+        gap: 12px 20px;
     }
 }

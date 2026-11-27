@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesanan & Ulasan - SAKE</title>
+    <title>Pesanan &amp; Ulasan - SAKE</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="pesandanulasan.css">
 </head>
+
 <body>
 
+    <!-- iki bagian nduwur -->
     <div class="top-bar">
         SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU
+        <!-- Foto profil: klik untuk ke halaman Akun (huruf diisi otomatis dari nama akun) -->
+        <a href="akun.html" class="avatar-nav" id="avatarNav" aria-label="Akun saya" title="Akun saya">?</a>
     </div>
 
     <input type="checkbox" id="sidebar-toggle" hidden>
     <label for="sidebar-toggle" class="menu-btn" aria-label="Buka Menu">☰</label>
     <label for="sidebar-toggle" class="overlay"></label>
 
+    <!-- iki sidebar navigasi e -->
     <aside class="sidebar">
         <div class="sidebar-header">
             <div class="brand">
@@ -38,48 +44,46 @@
 
         <div class="akun">
             <span id="userEmail">Memuat akun...</span>
-            <button type="button" onclick="logout()">Logout</button>
+            <button onclick="logout()">Logout</button>
         </div>
     </aside>
 
+    <!-- DAFTAR PESANAN -->
     <main class="content">
+        <section class="daftar-pesanan">
 
-        <section id="kosong" class="box empty" hidden>
-            <div class="empty-ico">🛒</div>
-            <h2>Keranjang masih kosong</h2>
-            <p>Yuk pilih varian sambal favoritmu dulu.</p>
-            <a href="catalog.html" class="btn">Lihat Produk</a>
-        </section>
-
-        <section id="daftar" class="cart-list">
-            <article class="box cart-item">
+            <!-- Pesanan 1 -->
+            <article class="box pesanan-item">
                 <img src="Cumi.jpg" alt="Sambal Cumi">
-                <div class="item-info">
+                <div class="pesanan-info">
                     <h3>Sambal Cumi</h3>
                     <p class="harga">Rp 25.000</p>
-                    <div class="qty">
-                        <span>1x</span>
-                        <span class="teks-status">Pesanan Diterima</span>
+                    <div class="baris-status">
+                        <span class="jumlah">1x</span>
+                        <span class="status">Pesanan Diterima</span>
                     </div>
                     <a href="ulasan.html" class="btn-ulasan" aria-label="Rating & Beri Ulasan">Rating & Beri Ulasan</a>
                 </div>
             </article>
 
-            <article class="box cart-item">
+            <!-- Pesanan 2 -->
+            <article class="box pesanan-item">
                 <img src="matah.jpg" alt="Sambal Matah">
-                <div class="item-info">
+                <div class="pesanan-info">
                     <h3>Sambal Matah</h3>
                     <p class="harga">Rp 25.000</p>
-                    <div class="qty">
-                        <span>1x</span>
-                        <span class="teks-status">Pesanan Diterima</span>
+                    <div class="baris-status">
+                        <span class="jumlah">1x</span>
+                        <span class="status">Pesanan Diterima</span>
                     </div>
                     <a href="ulasan.html" class="btn-ulasan" aria-label="Rating & Beri Ulasan">Rating & Beri Ulasan</a>
+                </div>
             </article>
-        </section>
 
+        </section>
     </main>
 
+    <!-- FOOTER -->
     <footer id="kontak" class="footer">
         <div class="container footer-grid">
             <div class="footer-brand">
@@ -105,7 +109,9 @@
         </div>
     </footer>
 
+    <!-- SCRIPT JAVASCRIPT E DATABASE CAK -->
     <script src="sake-database.js"></script>
     <script src="auth.js"></script>
 </body>
+
 </html>

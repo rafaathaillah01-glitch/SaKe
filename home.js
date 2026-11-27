@@ -11,6 +11,13 @@ async function tampilkanAkun() {
     }
 
     document.getElementById("userEmail").textContent = user.email;
+
+    // Isi huruf depan nama di foto profil (pojok kanan atas)
+    const elAvatar = document.getElementById("avatarNav");
+    if (elAvatar) {
+        const nama = user.nama || user.email.split("@")[0];
+        elAvatar.textContent = nama.charAt(0).toUpperCase();
+    }
 }
 
 async function logout() {
