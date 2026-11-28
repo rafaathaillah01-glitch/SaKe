@@ -1,0 +1,134 @@
+.top-bar {
+    z-index: 800;
+}
+
+/* ---------- Judul + tombol tandai dibaca ---------- */
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.notif-header .page-title {
+    font-size: 22px;
+}
+
+.btn-baca-semua {
+    background: none;
+    border: 0;
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-baca-semua:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Daftar notifikasi ---------- */
+.daftar-notif {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notif-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+}
+
+.notif-item:hover {
+    border-color: var(--red);
+}
+
+/* Ikon bulat di kiri */
+.notif-ikon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+/* kalau ikon diganti gambar (<img>), ukurannya ikut */
+.notif-ikon img {
+    width: 24px;
+    height: 24px;
+}
+
+.notif-teks {
+    flex: 1;
+    min-width: 0;
+    padding-right: 14px;         /* ruang untuk titik merah */
+}
+
+.notif-teks h3 {
+    font-size: 15px;
+}
+
+.notif-teks p {
+    font-size: 13.5px;
+    color: var(--text);
+    margin: 2px 0 6px;
+}
+
+.notif-teks small {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Notifikasi yang belum dibaca: latar putih + titik merah di kanan atas */
+.notif-item.belum-dibaca {
+    background: var(--white);
+    border-color: var(--red);
+}
+
+.notif-item.belum-dibaca::after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 10px;
+    height: 10px;
+    background: var(--red);
+    border-radius: 50%;
+}
+
+/* ---------- Kosong ---------- */
+.notif-kosong {
+    text-align: center;
+    color: var(--muted);
+    padding: 40px 0;
+}
+
+.tersembunyi {
+    display: none;
+}
+
+/* ---------- HP ---------- */
+@media (max-width: 400px) {
+    .notif-item {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .notif-ikon {
+        width: 38px;
+        height: 38px;
+        font-size: 17px;
+    }
+
+    .notif-header .page-title {
+        font-size: 20px;
+    }
+}

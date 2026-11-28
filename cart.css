@@ -228,7 +228,6 @@
 
 /* iki top bar wong */
 .top-bar {
-    position: relative;          /* top bar tetap di atas halaman, ikut ter-scroll (tidak mengikuti layar) */
     background: var(--red);
     color: var(--white);
     text-align: center;
@@ -236,9 +235,8 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     padding: 10px 56px;          /* ruang kiri-kanan untuk tombol menu & foto profil */
-        position: sticky;
+    position: sticky;
     top: 0;
-    z-index: 1000;
 }
 
 /* Foto profil di pojok kanan atas (sama dengan avatar di halaman Akun) */

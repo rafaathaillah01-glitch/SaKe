@@ -7,7 +7,6 @@
 
 /* ---------- Top bar & tombol menu ---------- */
 .top-bar {
-    position: relative;          /* top bar tetap di atas halaman, ikut ter-scroll (tidak mengikuti layar) */
     background: var(--red);
     color: var(--white);
     text-align: center;
@@ -15,9 +14,8 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     padding: 10px 56px;          /* ruang kiri-kanan untuk tombol menu & foto profil */
-        position: sticky;
+    position: sticky;
     top: 0;
-    z-index: 1000;
 }
 
 /* Foto profil di pojok kanan atas (sama dengan avatar di halaman Akun) */
@@ -126,12 +124,14 @@
     font-weight: 500;
     color: var(--muted);
     white-space: nowrap;
+    margin-right: 25px;
 }
 
 /* Tombol rata kanan di bawah baris status */
 .btn-ulasan {
     display: block;
-    margin: 10px 0 0 auto;
+    width: fit-content;
+    margin-left: auto;           /* rata kanan otomatis, tidak lagi pakai angka tetap 290px */
     padding: 7px 10px;
     background: var(--red);
     color: var(--white);
@@ -236,12 +236,23 @@
         width: 100%;
     }
 
-    /* Tombol ulasan selebar kartu, mudah diketuk */
+    /* Status tidak perlu jarak kanan lagi karena kartu sudah satu kolom */
+    .status {
+        margin-right: 0;
+    }
+
+    /* Tombol ulasan kecil, rata kanan (tidak selebar kartu) */
     .btn-ulasan {
-        width: 100%;
-        margin-left: 0;
-        padding: 12px;
+        width: fit-content;
+        margin-left: auto;
+        padding: 8px 16px;
+        font-size: 13px;
+        white-space: nowrap;
         text-align: center;
+    }
+
+    .content {
+        padding: 16px 16px 32px;
     }
 
     .container {
@@ -259,5 +270,26 @@
         justify-content: center;
         flex-wrap: wrap;
         gap: 12px;
+    }
+}
+
+
+/* HP kecil (lebar <= 400px) */
+@media (max-width: 400px) {
+    .top-bar {
+        font-size: 10px;
+        padding: 12px 52px;
+    }
+
+    .pesanan-item img {
+        height: 150px;
+    }
+
+    .baris-status {
+        flex-wrap: wrap;
+    }
+
+    .footer-links div {
+        gap: 10px 16px;
     }
 }

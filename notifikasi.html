@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifikasi - SAKE</title>
+    <!-- style.css = gaya bersama, pesandanulasan.css = gaya top bar, sidebar & footer, notifikasi.css = gaya khusus halaman ini -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="pesandanulasan.css">
+    <link rel="stylesheet" href="notifikasi.css">
 </head>
+
 <body>
 
-    <!--iki bagian nduwur-->
-        <div class="top-bar">
+    <!-- Garis merah di atas (sama dengan halaman Pesanan & Ulasan) -->
+    <div class="top-bar">
         SAKE - SAMBAL KEMASAN - PILIHAN RASA UNTUK TEMAN MAKANMU
+        <a href="akun.html" class="avatar-nav" id="avatarNav" aria-label="Akun saya" title="Akun saya">?</a>
     </div>
 
+    <!-- Tombol garis tiga + sidebar (cara kerjanya sama dengan halaman lain) -->
     <input type="checkbox" id="sidebar-toggle" hidden>
     <label for="sidebar-toggle" class="menu-btn" aria-label="Buka Menu">☰</label>
     <label for="sidebar-toggle" class="overlay"></label>
 
-    <!--iki sidebar navigasi e-->
     <aside class="sidebar">
         <div class="sidebar-header">
             <div class="brand">
@@ -44,8 +49,102 @@
         </div>
     </aside>
 
-    <!--SCRIPT JAVASCRIPT E DATABASE CAK-->
+    <!-- ISI HALAMAN NOTIFIKASI -->
+    <main class="content">
+
+        <!-- Judul halaman + tombol tandai semua dibaca -->
+        <div class="notif-header">
+            <h1 class="page-title">Notifikasi</h1>
+            <button type="button" class="btn-baca-semua" id="bacaSemua">Tandai semua dibaca</button>
+        </div>
+
+        <!-- Daftar notifikasi.
+             class "belum-dibaca" = notifikasi baru (latar putih + titik merah).
+             Hapus class itu kalau notifikasi sudah dibaca.
+             Untuk menambah notifikasi, salin satu blok <a class="box notif-item"> lalu ubah isinya. -->
+        <section class="daftar-notif">
+
+            <a href="pesandanulasan.html" class="box notif-item belum-dibaca">
+                <!-- Ikon: bisa diganti gambar sendiri, contoh <img src="icons/pesanan.png" alt=""> -->
+                <span class="notif-ikon">📦</span>
+                <div class="notif-teks">
+                    <h3>Pesanan Diterima</h3>
+                    <p>Pesanan Sambal Cumi kamu sudah sampai. Yuk beri rating dan ulasan!</p>
+                    <small>2 jam yang lalu</small>
+                </div>
+            </a>
+
+            <a href="pesandanulasan.html" class="box notif-item belum-dibaca">
+                <span class="notif-ikon">📦</span>
+                <div class="notif-teks">
+                    <h3>Pesanan Diterima</h3>
+                    <p>Pesanan Sambal Matah kamu sudah sampai. Yuk beri rating dan ulasan!</p>
+                    <small>2 jam yang lalu</small>
+                </div>
+            </a>
+
+            <a href="catalog.html" class="box notif-item">
+                <span class="notif-ikon">🌶️</span>
+                <div class="notif-teks">
+                    <h3>Rasa Baru Telah Hadir</h3>
+                    <p>Cek pilihan sambal terbaru SAKE di halaman Produk.</p>
+                    <small>Kemarin</small>
+                </div>
+            </a>
+
+            <a href="akun.html" class="box notif-item">
+                <span class="notif-ikon">👋</span>
+                <div class="notif-teks">
+                    <h3>Selamat Datang di SAKE</h3>
+                    <p>Akun kamu sudah aktif. Selamat berbelanja!</p>
+                    <small>3 hari yang lalu</small>
+                </div>
+            </a>
+
+        </section>
+
+        <!-- Tampil kalau tidak ada notifikasi sama sekali (hapus class "tersembunyi" untuk menampilkannya) -->
+        <p class="notif-kosong tersembunyi">Belum ada notifikasi.</p>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="kontak" class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <img src="logo.png" alt="Logo SAKE">
+                    <div>
+                        <strong>SAKE</strong>
+                        <small>SAMBAL KEMASAN</small>
+                    </div>
+                </div>
+                <p>Teman makan untuk setiap momen.</p>
+            </div>
+
+            <div class="footer-links">
+                <small>JELAJAHI</small>
+                <div>
+                    <a href="home.html">Beranda</a>
+                    <a href="catalog.html">Produk</a>
+                    <a href="cart.html">Keranjang</a>
+                    <a href="akun.html">Akun</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="sake-database.js"></script>
     <script src="auth.js"></script>
+
+    <!-- Script kecil: tombol "Tandai semua dibaca" menghapus tanda notifikasi baru -->
+    <script>
+        document.getElementById("bacaSemua").addEventListener("click", function () {
+            document.querySelectorAll(".notif-item.belum-dibaca").forEach(function (item) {
+                item.classList.remove("belum-dibaca");
+            });
+        });
+    </script>
 </body>
+
 </html>

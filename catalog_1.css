@@ -52,7 +52,9 @@ a {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
-    padding: 8px 16px;
+    padding: 10px 56px;          /* ruang kiri-kanan untuk tombol menu & foto profil */
+    position: sticky;
+    top: 0;
 }
 
 /* Tombol & Sidebar Buka-Tutup */
